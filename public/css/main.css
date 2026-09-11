@@ -1,30 +1,214 @@
-html, body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+:root {
+    --primary: #1f4f5f;
+    --primary-dark: #163b47;
+    --accent: #e07a3f;
+    --background: #f4f7f8;
+    --surface: #ffffff;
+    --text: #243238;
+    --text-light: #66757c;
+    --border: #d9e2e5;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+header > * {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    padding: 1rem 2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: block;
+    padding: 0.65rem 1rem;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+nav a:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+nav a:focus {
+    outline: 3px solid rgba(31, 79, 95, 0.25);
+    outline-offset: 3px;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+main {
+    width: min(1100px, 90%);
+    margin: 3rem auto;
+    flex: 1;
+}
+
+main h1 {
+    margin-bottom: 0.75rem;
+    color: var(--primary-dark);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+}
+
+main h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+main p {
+    max-width: 750px;
+    color: var(--text-light);
+    font-size: 1.05rem;
+}
+
+/* =========================
+   LISTS / CATEGORIES
+========================= */
+
+main ul {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+    );
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+main li {
+    background-color: var(--surface);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    font-weight: 600;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+main li:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: auto;
+
+    padding: 1.5rem 2rem;
+
+    background-color: var(--primary-dark);
+    color: white;
+
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
     nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            display: inline;
-            margin-right: 15px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-
-            &:hover {
-                color: #0066cc;
-            }
-        }
+        padding: 1rem;
     }
-}                
+
+    nav ul {
+        flex-direction: column;
+
+        gap: 0.4rem;
+    }
+
+    nav li {
+        width: 100%;
+    }
+
+    nav a {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    main {
+        width: 92%;
+        margin: 2rem auto;
+    }
+
+    main ul {
+        grid-template-columns: 1fr;
+    }
+}               

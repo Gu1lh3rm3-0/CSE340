@@ -1,0 +1,26 @@
+{
+  "name": "cse340",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Gu1lh3rm3-0/CSE340#readme",
+  "bugs": {
+    "url": "https://github.com/Gu1lh3rm3-0/CSE340/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gu1lh3rm3-0/CSE340.git"
+  },
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

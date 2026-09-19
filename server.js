@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import { testConnection } from './src/models/db.js';
 import { getAllOrganizations } from './src/models/organizations.js';
+import { getAllCategories } from './src/models/categories.js';
 
 // Define the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
@@ -36,8 +37,17 @@ app.get('/projects', async (req, res) => {
 });
 
 app.get('/categories', async (req, res) => {
-    const title = 'Service Project Categories';
-    res.render('categories', { title });
+    try {
+        const categories = await getAllCategories();
+        const title = 'Service Project Categories';
+        res.render('categories', {
+            title,
+            categories
+        });
+    } catch (error) {
+        console.error('Error loading categories:', error);
+        res.status(500).send('Unable to load categories.');
+    }
 });
 
 app.get('/organizations', async (req, res) => {

@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import { testConnection } from './src/models/db.js';
 import router from './src/routes.js';
+import { showCategoriesPage,categoryDetails} from './controllers/categories.js';
 
 // Define the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
@@ -41,6 +42,10 @@ app.use((req, res, next) => {
     res.locals.NODE_ENV = NODE_ENV;
     next();
 });
+
+app.get('/categories', showCategoriesPage);
+
+app.get('/category/:id', categoryDetails);
 
 // Use the imported router to handle routes
 app.use(router);

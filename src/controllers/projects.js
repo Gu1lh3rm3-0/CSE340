@@ -1,23 +1,55 @@
-// Import any needed model functions
-import { getAllProjects } from '../models/projects.js';
+import {
+    getUpcomingProjects,
+    getProjectDetails
+} from '../models/projects.js';
 
-// Define any controller functions
+import {
+    getCategoriesByProjectId
+} from '../models/categories.js';
+
 const showProjectsPage = async (req, res) => {
-    const projects = await getAllProjects();
-    const title = 'Service Projects';
+    const projects = await getUpcomingProjects(5);
+    const title = 'Upcoming Service Projects';
 
-    res.render('projects', { title, projects });
+    res.render('projects', {
+        title,
+        projects
+    });
 };
 
 const showProjectDetailsPage = async (req, res) => {
-    const ID = req.params.id;
-    console.log(ID);
-    const projectDetails = await getProjectDetails(ID);
-    const organizations = await getAllOrganizations();
-    const title = 'Service Project Details:';
-    //const title = projectDetails.title;
-    res.render('project', { title, projectDetails, organizations });
+    const projectId = req.params.id;
+
+    try {
+        const projectDetails = await getProjectDetails(projectId);
+        const categories = await getCategoriesByProjectId(projectId);
+
+        if (!projectDetails) {
+            return res.status(404).render('errors/404', {
+                title: 'Page Not Found'
+            });
+        }
+
+        const title = 'Service Project Details';
+
+        res.render('project', {
+            title,
+            projectDetails,
+            categories
+        });
+    } catch (error) {
+        console.error('Error getting project details:', error);
+
+        res.status(500).render('errors/500', {
+            title: 'Server Error',
+            error: error.message,
+            stack: error.stack,
+            NODE_ENV: process.env.NODE_ENV
+        });
+    }
 };
 
-// Export any controller functions
-export {showProjectsPage, showProjectDetailsPage};
+export {
+    showProjectsPage,
+    showProjectDetailsPage
+};

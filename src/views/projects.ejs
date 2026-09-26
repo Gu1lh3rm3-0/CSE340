@@ -1,23 +1,55 @@
 <%- include('partials/header') %>
-    <main>     
-        <h1><%= title %></h1>
-        <section class="project-details">
-            <p><strong>Description:</strong> <%= projectDetails.description %></p>
-            <p><strong>Date:</strong> <%= projectDetails.project_date %></p>
-            <p><strong>Location:</strong> <%= projectDetails.location %></p>
-            <p><strong>Organization:</strong><a href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.organization_name %></a></p>
+
+<main>
+    <h1><%= title %></h1>
+
+    <% if (projects.length > 0) { %>
+
+        <section class="projects-list">
+
+            <% projects.forEach(project => { %>
+
+                <article class="project-card">
+
+                    <h2>
+                        <a href="/project/<%= project.project_id %>">
+                            <%= project.title %>
+                        </a>
+                    </h2>
+
+                    <p>
+                        <strong>Description:</strong>
+                        <%= project.description %>
+                    </p>
+
+                    <p>
+                        <strong>Date:</strong>
+                        <%= project.project_date %>
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        <%= project.location %>
+                    </p>
+
+                    <p>
+                        <strong>Organization:</strong>
+                        <a href="/organization/<%= project.organization_id %>">
+                            <%= project.organization_name %>
+                        </a>
+                    </p>
+
+                </article>
+
+            <% }); %>
+
         </section>
-        <h2>Categories</h2>
-        <% if (categories.length > 0) { %>
-            <div class="category-tags">
-            <% categories.forEach(category => { %>
-            <a href="/category/<%= category.category_id %>" class="category-tag">
-                <%= category.name %>
-            </a>
-        <% }); %>
-    </div>
-        <% } else { %>
-        <p>No categories assigned to this project.</p>
-        <% } %>
-    </main>
+
+    <% } else { %>
+
+        <p>There are currently no upcoming service projects.</p>
+
+    <% } %>
+</main>
+
 <%- include('partials/footer') %>

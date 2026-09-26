@@ -7,7 +7,17 @@ const showProjectsPage = async (req, res) => {
     const title = 'Service Projects';
 
     res.render('projects', { title, projects });
-};  
+};
+
+const showProjectDetailsPage = async (req, res) => {
+    const ID = req.params.id;
+    console.log(ID);
+    const projectDetails = await getProjectDetails(ID);
+    const organizations = await getAllOrganizations();
+    const title = 'Service Project Details:';
+    //const title = projectDetails.title;
+    res.render('project', { title, projectDetails, organizations });
+};
 
 // Export any controller functions
-export { showProjectsPage };
+export {showProjectsPage, showProjectDetailsPage};

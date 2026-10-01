@@ -83,35 +83,17 @@ const getProjectDetails = async (projectId) => {
     return result.rows[0];
 };
 
-const updateProject = async (
-    projectId,
-    title,
-    description,
-    location,
-    project_date,
-    organization_id
-) => {
+
+const updateProject = async (projectId, title, description, location, project_date, organization_id) => {
     const query = `
-        UPDATE projects
-        SET
-            title = $2,
-            description = $3,
-            location = $4,
-            project_date = $5,
-            organization_id = $6
-        WHERE project_id = $1
-        RETURNING project_id;
+      UPDATE projects
+      SET
+      title = $2, description = $3, location = $4, project_date  = $5, organization_id = $6
+      WHERE project_id = $1
+      RETURNING project_id
     `;
 
-    const queryParams = [
-        projectId,
-        title,
-        description,
-        location,
-        project_date,
-        organization_id
-    ];
-
+    const queryParams = [projectId, title, description, location, project_date, organization_id];
     const result = await db.query(query, queryParams);
 
     if (result.rows.length === 0) {

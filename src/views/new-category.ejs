@@ -1,0 +1,46 @@
+<%- include('partials/header') %>
+
+<main>
+    <h1><%= title %></h1>
+
+    <section class="category-form-container">
+
+        <h2>Create New Category</h2>
+
+        <form
+            action="/new-category"
+            method="POST"
+            class="category-form"
+        >
+
+            <label for="name">
+                Category Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                maxlength="100"
+                required
+                autocomplete="off"
+            >
+
+            <p class="form-help">
+                Category names must be between 3 and 100 characters.
+            </p>
+
+            <button type="submit">
+                Create Category
+            </button>
+
+            <a href="/categories" class="cancel-link">
+                Cancel
+            </a>
+
+        </form>
+
+    </section>
+</main>
+
+<%- include('partials/footer') %>

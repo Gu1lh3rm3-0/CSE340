@@ -1,0 +1,50 @@
+<%- include('partials/header') %>
+
+<main>
+    <h1><%= title %></h1>
+
+    <section class="category-form-container">
+
+        <h2>Edit Category</h2>
+
+        <form
+            action="/edit-category/<%= category.category_id %>"
+            method="POST"
+            class="category-form"
+        >
+
+            <label for="name">
+                Category Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                value="<%= category.name %>"
+                maxlength="100"
+                required
+                autocomplete="off"
+            >
+
+            <p class="form-help">
+                Category names must be between 3 and 100 characters.
+            </p>
+
+            <button type="submit">
+                Update Category
+            </button>
+
+            <a
+                href="/category/<%= category.category_id %>"
+                class="cancel-link"
+            >
+                Cancel
+            </a>
+
+        </form>
+
+    </section>
+</main>
+
+<%- include('partials/footer') %>

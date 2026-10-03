@@ -2,9 +2,16 @@
 
 <main>
     <section class="category-details">
-        <h1><%= category.name %></h1>
+    <h1><%= category.name %></h1>
 
-        <h2>Service Projects</h2>
+    <a
+        href="/edit-category/<%= category.category_id %>"
+        class="category-action"
+    >
+        Edit Category
+    </a>
+
+    <h2>Service Projects</h2>
 
         <% if (projects && projects.length > 0) { %>
 

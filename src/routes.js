@@ -5,6 +5,10 @@ import { showHomePage } from './controllers/index.js';
 import {
     showProjectsPage,
     showProjectDetailsPage,
+    showNewProjectForm,
+    processNewProjectForm,
+    showEditProjectForm,
+    processEditProjectForm,
     projectValidation,
 } from './controllers/projects.js';
 
@@ -57,6 +61,10 @@ router.get('/project/:id', showProjectDetailsPage);
 router.get('/categories', showCategoriesPage);
 
 router.get('/category/:id', categoryDetails);
+
+router.get('/edit-project/:id', showEditProjectForm);
+
+router.post('/edit-project/:id', processEditProjectForm);
 
 // Route for new project page
 router.get('/new-project', showNewProjectForm);

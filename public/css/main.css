@@ -220,6 +220,129 @@ footer p {
 }
 
 /* =========================
+   Edit Project Form
+   ========================= */
+
+form {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+form label {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    color: #333;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+
+    border: 1px solid #c7c7c7;
+    border-radius: 6px;
+    background-color: #fff;
+
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+    border-color: #3f6f8f;
+    box-shadow: 0 0 0 3px rgba(63, 111, 143, 0.15);
+}
+
+form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+form select {
+    cursor: pointer;
+}
+
+form button {
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #3f6f8f;
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+form button:hover {
+    background-color: #315a74;
+}
+
+form button:active {
+    transform: translateY(1px);
+}
+
+form a {
+    margin-top: 0.5rem;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: #555;
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+}
+
+form a:hover {
+    color: #3f6f8f;
+    text-decoration: underline;
+}
+
+
+/* =========================
+   Mobile
+   ========================= */
+
+@media (max-width: 600px) {
+
+    form {
+        margin: 1rem;
+        padding: 1.25rem;
+    }
+
+    form input,
+    form textarea,
+    form select {
+        font-size: 16px;
+    }
+
+    form button {
+        width: 100%;
+    }
+}
+
+/* =========================
    MOBILE
 ========================= */
 
